@@ -4,7 +4,6 @@ feature "user registers" do
   scenario "allows individual to register for Blocipedia" do
     visit root_path
     click_on('Sign Up')
-    fill_in 'Name', with: 'Joe Schmo'
     fill_in 'Email', with: 'abc@example.com'
     fill_in 'Password', with: 'helloworld'
     fill_in 'Password Confirmation', with: 'helloworld'
@@ -19,7 +18,7 @@ feature "user registers" do
     fill_in 'Password', with: 'helloworld'
     click_button('Log In')
     expect(page).to have_content 'Signed in successfully.'
-    expect(page).to have_content 'Joe Schmo' 
+    expect(page).to have_content 'abc@example.com' 
 
   end
 end
