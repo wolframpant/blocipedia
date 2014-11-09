@@ -8,9 +8,34 @@ group :production do
   gem 'rails_12factor'
 end
 
-  group :development do
-    gem 'sqlite3'
-  end
+group :development do
+  gem 'sqlite3'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '>= 2.0.1'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
+group :test do
+  gem 'email_spec'
+end
+
+gem 'bootstrap-sass', '~>3.2.0'
+
+gem 'figaro', '1.0'
+
+gem 'faker'
+
+gem 'haml-rails'
+
+gem 'devise'
+
+gem 'redcarpet'
+
+gem 'friendly_id', '~> 5.0.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
