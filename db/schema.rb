@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112010315) do
+ActiveRecord::Schema.define(version: 20141112025123) do
+
+  create_table "relationships", force: true do |t|
+    t.integer "wiki_id"
+    t.integer "user_id"
+    t.boolean "creator_created"
+    t.boolean "collaborator"
+  end
+
+  add_index "relationships", ["id"], name: "index_relationships_on_id", unique: true
+  add_index "relationships", ["user_id"], name: "index_relationships_on_user_id"
+  add_index "relationships", ["wiki_id"], name: "index_relationships_on_wiki_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -34,6 +45,7 @@ ActiveRecord::Schema.define(version: 20141112010315) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["id"], name: "index_users_on_id", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "wikis", force: true do |t|
@@ -43,5 +55,7 @@ ActiveRecord::Schema.define(version: 20141112010315) do
     t.datetime "updated_at"
     t.text     "body"
   end
+
+  add_index "wikis", ["id"], name: "index_wikis_on_id", unique: true
 
 end
