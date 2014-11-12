@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all
+    @wikis = current_user.wikis.all
   end
 
   def show
@@ -12,10 +12,11 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.new(wiki_params)
+    @wiki = current_user.wikis.build(wiki_params)
     if @wiki.save
-       flash[:notice] = "Your new Wiki was saved."
-       redirect_to @wiki
+      relationship = Relationship.new(wiki_id: @wiki.id, user_id: current_user.id, creator_created: true)
+      flash[:notice] = "Your new Wiki was saved."
+      redirect_to @wiki
     else
       flash[:notice] = 'Please enter both a title and a body for your Wiki.'
       render :new
