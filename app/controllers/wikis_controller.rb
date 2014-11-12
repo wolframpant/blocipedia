@@ -23,7 +23,26 @@ class WikisController < ApplicationController
     end
   end
 
+  def edit
+    @wiki = Wiki.find(params[:id])
+    authorize @wiki
+ 
+    else
+      flash[:error] = "Error saving topic. Please try again."
+      render :edit
+    end
+  end
+
   def update
+    @wiki = Wiki.find(params[:id])
+    authorize @wiki
+    if @wiki.update_attributes(wiki_params) 
+      redirect_to @wiki
+      flash[:notice] = "Success!"
+    else
+      render :edit
+      flash[:notice] = "Please try again."
+    end
   end
 
   private
@@ -32,4 +51,3 @@ class WikisController < ApplicationController
     params.require(:wiki).permit(:title, :body)
   end
 
-end

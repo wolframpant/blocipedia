@@ -9,7 +9,9 @@ RSpec.describe Wiki, :type => :model do
   end
 
   context "validations" do
-    # expect(Wiki.new).to validate
+    it 'should validate the presence of a title and a body in each wiki' do
+      expect(Wiki.new).to validate_presence_of :title
+      expect(Wiki.new).to validate_presence_of :body
+    end
   end
-
 end

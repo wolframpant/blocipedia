@@ -1,5 +1,5 @@
 Blocipedia::Application.routes.draw do
-  resources :wikis, only: [:index, :show, :new, :create, :update]
+  resources :wikis, only: [:index, :show, :new, :create, :update, :edit]
 
   devise_for :users
 
