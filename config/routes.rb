@@ -1,5 +1,8 @@
 Blocipedia::Application.routes.draw do
+  resources :wikis, only: [:index, :show, :new, :create, :update]
+
   devise_for :users
+
   root "welcome#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

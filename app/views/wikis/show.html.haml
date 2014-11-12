@@ -1,0 +1,8 @@
+%h1= @wiki.title
+%br
+%p
+  = markdown(@wiki.body)
+%h4 Published 
+  = time_ago_in_words @wiki.published_at
+  ago
+= link_to "Back to Index", wikis_path
