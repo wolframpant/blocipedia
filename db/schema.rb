@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111183154) do
+ActiveRecord::Schema.define(version: 20141112010315) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20141111183154) do
 
   create_table "wikis", force: true do |t|
     t.string   "title"
-    t.string   "body"
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "body"
   end
 
 end

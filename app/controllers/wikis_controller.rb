@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.order('published_at DESC')
+    @wikis = Wiki.all
   end
 
   def show
@@ -12,10 +12,10 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = Wikis.build(wiki_params)
-    if @wiki.valid?
-      @wiki.save
-      redirect_to @wiki, notice: 'Your new Wiki was saved.'
+    @wiki = Wiki.new(wiki_params)
+    if @wiki.save
+       flash[:notice] = "Your new Wiki was saved."
+       redirect_to @wiki
     else
       flash[:notice] = 'Please enter both a title and a body for your Wiki.'
       render :new

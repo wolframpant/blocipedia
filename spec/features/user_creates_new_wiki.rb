@@ -11,5 +11,6 @@ feature "User creates new Wiki" do
       fill_in 'Title', with: 'My bio'
       fill_in 'Body', with: 'This is my life story.'
       click_button 'Save'
+      expect(page).to have_content "Your Wiki has been saved."
   end
 end

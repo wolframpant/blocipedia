@@ -3,9 +3,9 @@
 - @wikis.each do |wiki|
   %h1= link_to wiki.title, wiki
   %p
-    = markdown(wiki.body)
+    = markdown(wiki.body) 
   %h5 
-    Published
-    = time_ago_in_words wiki.published_at
+    Created
+    = time_ago_in_words(wiki.created_at)
     ago
-  %if wiki != @wikis.last %br
+  
