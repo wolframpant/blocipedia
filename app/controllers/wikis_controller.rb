@@ -14,6 +14,7 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new(wiki_params)
+    authorize(@wiki)
     if @wiki.save
       @r = Relationship.create(wiki_id: @wiki.id, user_id: current_user.id, creator_created: 'true')
       flash[:notice] = "Your new Wiki was saved."
@@ -26,21 +27,12 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
-    authorize @wiki
-    if @wiki.save
-      flash[:notice] "Your Wiki has been saved"
-      redirect_to @wiki
-    else
-      flash[:error] = "Error saving topic. Please try again."
-      render :edit
-    end
   end
 
   def update
     @wiki = Wiki.find(params[:id])
-    authorize @wiki
     if @wiki.update_attributes(wiki_params) 
-      redirect_to @wiki
+      redirect_to wiki_path
       flash[:notice] = "Success!"
     else
       render :edit
@@ -53,4 +45,4 @@ class WikisController < ApplicationController
   def wiki_params
     params.require(:wiki).permit(:title, :body)
   end
-
+end
