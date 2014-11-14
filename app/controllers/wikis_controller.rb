@@ -27,6 +27,9 @@ class WikisController < ApplicationController
   def edit
     @wiki = Wiki.find(params[:id])
     authorize @wiki
+    if @wiki.save
+      flash[:notice] "Your Wiki has been saved"
+      redirect_to @wiki
     else
       flash[:error] = "Error saving topic. Please try again."
       render :edit
