@@ -1,4 +1,7 @@
-%h1 My Wikis
+%h1 All Wikis
+%br
+- if policy(Wiki.new).create?
+  = link_to 'New Wiki', new_wiki_path, class: 'btn btn-success'
 %br
 - @wikis.each do |wiki|
   %h1= link_to wiki.title, wiki

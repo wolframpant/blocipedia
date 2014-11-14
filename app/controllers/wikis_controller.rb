@@ -1,8 +1,9 @@
 class WikisController < ApplicationController
   def index
-    @wikis = current_user.wikis.all
+    @wikis = Wiki.all
+    authorize @wikis
   end
-
+ 
   def show
     @wiki = Wiki.find(params[:id])
   end
@@ -12,9 +13,9 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = current_user.wikis.build(wiki_params)
+    @wiki = Wiki.new(wiki_params)
     if @wiki.save
-      relationship = Relationship.new(wiki_id: @wiki.id, user_id: current_user.id, creator_created: true)
+      @r = Relationship.create(wiki_id: @wiki.id, user_id: current_user.id, creator_created: 'true')
       flash[:notice] = "Your new Wiki was saved."
       redirect_to @wiki
     else
@@ -26,7 +27,6 @@ class WikisController < ApplicationController
   def edit
     @wiki = Wiki.find(params[:id])
     authorize @wiki
- 
     else
       flash[:error] = "Error saving topic. Please try again."
       render :edit

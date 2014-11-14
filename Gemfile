@@ -34,6 +34,8 @@ gem 'haml-rails'
 
 gem 'devise'
 
+gem 'pundit'
+
 gem 'redcarpet'
 
 gem 'friendly_id', '~> 5.0.0'
