@@ -1,5 +1,6 @@
 Blocipedia::Application.routes.draw do
   resources :wikis, only: [:index, :show, :new, :create, :update, :edit]
+  resources :charges, only: [:new, :create]
 
   get 'mine' => 'wikis#my_wikis'
 
@@ -7,6 +8,8 @@ Blocipedia::Application.routes.draw do
 
   root "welcome#index"
 
+    
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

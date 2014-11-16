@@ -38,6 +38,8 @@ gem 'pundit'
 
 gem 'redcarpet'
 
+gem 'stripe'
+
 gem 'friendly_id', '~> 5.0.0'
 
 # Use SCSS for stylesheets
