@@ -1,0 +1,13 @@
+%h1 All Wikis Created by #{current_user.name || current_user.email}
+%br
+- if policy(Wiki.new).create?
+  = link_to 'New Wiki', new_wiki_path, class: 'btn btn-success'
+%br
+- @wikis.each do |wiki|
+  %h1= link_to wiki.title, wiki
+  %p
+    = markdown(wiki.body) 
+  %h5 
+    Created
+    = time_ago_in_words(wiki.created_at)
+    ago

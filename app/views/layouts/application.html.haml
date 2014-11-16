@@ -14,6 +14,9 @@
           = link_to "Blocipedia", root_path
         %li
           = link_to "View Wikis", wikis_path
+        - if current_user
+          %li
+            = link_to "View My Wikis", mine_path
 
         .pull-right.user-info
           - if current_user

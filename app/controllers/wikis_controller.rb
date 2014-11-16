@@ -1,9 +1,12 @@
 class WikisController < ApplicationController
   def index
     @wikis = Wiki.all
-    authorize @wikis
   end
- 
+
+  def my_wikis
+    @wikis = current_user.wikis.where(relationships: {creator_created: true})
+  end
+
   def show
     @wiki = Wiki.find(params[:id])
   end

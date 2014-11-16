@@ -1,6 +1,8 @@
 Blocipedia::Application.routes.draw do
   resources :wikis, only: [:index, :show, :new, :create, :update, :edit]
 
+  get 'mine' => 'wikis#my_wikis'
+
   devise_for :users
 
   root "welcome#index"
