@@ -1,6 +1,7 @@
 class PrivateWikiController < ApplicationController
   def new
     @wiki = Wiki.new
+    @wiki.personal = true
   end
 
   def create

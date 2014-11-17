@@ -2,6 +2,8 @@
 %br
 - if policy(Wiki.new).create?
   = link_to 'New Wiki', new_wiki_path, class: 'btn btn-success'
+- if current_user && current_user.premium
+  = link_to 'Create Private Wiki', private_wiki_new_path, class: 'btn btn-success'
 %br
 - @wikis.each do |wiki|
   %h1= link_to wiki.title, wiki

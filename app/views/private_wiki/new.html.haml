@@ -1,6 +1,5 @@
-%h1 Private Wiki
+%h1 Personal Wiki
 %br
-
 
 = form_for @wiki do |f| 
   = f.label :title
@@ -11,7 +10,6 @@
   %br
   = f.text_area :body, placeholder: 'Body', cols: 80, rows: 20
   %br
-  = f.label :privy
-  - f.check_box :privy, default: true
+  = f.hidden_field :personal, :value => true
   %br
   = f.submit 'Save and Parse'

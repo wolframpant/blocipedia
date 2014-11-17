@@ -1,4 +1,6 @@
 %h1 Edit Wiki
+= if @wiki.personal
+  %h3 Personal
 %br
 = form_for @wiki do |f| 
   = f.label :title
