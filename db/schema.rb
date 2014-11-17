@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112025123) do
+ActiveRecord::Schema.define(version: 20141117000302) do
 
   create_table "relationships", force: true do |t|
     t.integer "wiki_id"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20141112025123) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "premium"
+    t.string   "stripe_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(version: 20141112025123) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "body"
+    t.boolean  "personal"
   end
 
   add_index "wikis", ["id"], name: "index_wikis_on_id", unique: true

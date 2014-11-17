@@ -1,4 +1,8 @@
 Blocipedia::Application.routes.draw do
+  get "private_wiki/new"
+  get "private_wiki/create"
+  get "private_wiki/show"
+  get "private_wiki/index"
   resources :wikis, only: [:index, :show, :new, :create, :update, :edit]
   resources :charges, only: [:new, :create]
 

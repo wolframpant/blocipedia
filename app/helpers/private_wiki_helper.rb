@@ -1,0 +1,2 @@
+module PrivateWikiHelper
+end

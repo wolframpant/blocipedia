@@ -4,8 +4,7 @@ class ChargesController < ApplicationController
   end
 
   def create 
-    @user = User.find_by(params [:id])
-    @user.premium = true
+    @user=current_user
     # Amount in cents
     @amount = 500
 
@@ -20,6 +19,8 @@ class ChargesController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency => 'usd'
     )
+
+    u = @user.update(premium: true, stripe_id: customer.id)
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

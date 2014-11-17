@@ -17,6 +17,14 @@
         - if current_user
           %li
             = link_to "View My Wikis", mine_path
+        -if current_user && !current_user.premium
+          %li
+            = link_to "Become a PREMIUM member!", new_charge_path
+        -if current_user && current_user.premium
+          %li
+            = link_to "Create Private Wiki", private_wiki_new_path
+          %li
+            = link_to "View private Wikis", private_wiki_index_path
 
         .pull-right.user-info
           - if current_user

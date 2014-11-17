@@ -1,0 +1,17 @@
+%h1 Private Wiki
+%br
+
+
+= form_for @wiki do |f| 
+  = f.label :title
+  %br
+  = f.text_field :title, placeholder: 'Title', cols: 40
+  %br
+  = f.label :body
+  %br
+  = f.text_area :body, placeholder: 'Body', cols: 80, rows: 20
+  %br
+  = f.label :privy
+  - f.check_box :privy, default: true
+  %br
+  = f.submit 'Save and Parse'
