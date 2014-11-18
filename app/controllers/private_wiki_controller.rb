@@ -12,5 +12,6 @@ class PrivateWikiController < ApplicationController
   end
 
   def index
+    @wikis = Wiki.all
   end
 end

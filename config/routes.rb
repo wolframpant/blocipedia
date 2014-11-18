@@ -1,16 +1,19 @@
 Blocipedia::Application.routes.draw do
+  devise_for :users
+  
+  resources :wikis, only: [:index, :show, :new, :create, :update, :edit]
+  resources :charges, only: [:new, :create]
+
   get "private_wiki/new"
   get "private_wiki/create"
   get "private_wiki/show"
   get "private_wiki/index"
-  resources :wikis, only: [:index, :show, :new, :create, :update, :edit]
-  resources :charges, only: [:new, :create]
-
+  
   get 'mine' => 'wikis#my_wikis'
 
-  devise_for :users
-
   root "welcome#index"
+
+end
 
     
   
@@ -68,4 +71,4 @@ Blocipedia::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+

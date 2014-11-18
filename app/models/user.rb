@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
     relationships.find_by(wiki_id: wiki.id, user_id: user.id).creator_created
   end
 
+  def collaborator?(wiki, user)
+    relationships.find_by(wiki_id: wiki.id, user_id: user.id).collaborator
+  end
+
 end

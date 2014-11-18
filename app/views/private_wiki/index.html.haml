@@ -1,2 +1,13 @@
-%h1 PrivateWiki#index
-%p Find me in app/views/private_wiki/index.html.haml
+%h1 All Private Wikis related to #{current_user.name || current_user.email}
+%br
+- if policy(Wiki.new).create?
+  = link_to 'Create Public Wiki', new_wiki_path, class: 'btn btn-success'
+- if current_user && current_user.premium
+  = link_to 'Create Private Wiki', private_wiki_new_path, class: 'btn btn-success'
+%br
+- @wikis.each do |wiki|
+  - if wiki.personal && policy(wiki).view_personal?
+    %h1= link_to wiki.title, wiki
+    %p= markdown(wiki.body) 
+    %h5 Created #{time_ago_in_words(wiki.created_at)} ago
+

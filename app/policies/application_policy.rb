@@ -26,6 +26,14 @@ class ApplicationPolicy
     user.present? && user.creator?(record, user)
   end
 
+  def update_personal?
+    user.present? && user.premium? && (user.creator?(record, user) || user.collaborator(record, user))
+  end
+
+  def view_personal?
+    update_personal?
+  end
+
   def edit?
     update?
   end
