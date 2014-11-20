@@ -6,6 +6,14 @@ class ApplicationPolicy
     @record = record
   end
 
+  def view_personal?
+    update_personal?
+  end
+
+  def edit?
+    update?
+  end
+
   def index?
     false
   end
@@ -28,15 +36,10 @@ class ApplicationPolicy
 
   def update_personal?
     user.present? && user.premium? && (user.creator?(record, user) || user.collaborator(record, user))
-  end
+  end 
 
-  def view_personal?
-    update_personal?
-  end
-
-  def edit?
-    update?
-  end
+  def add_collaborators?
+    user.present? && user.premium? && user.creator?(record, user)
 
   def destroy?
     update?
@@ -46,17 +49,17 @@ class ApplicationPolicy
     record.class
   end
 
-  class Scope
-    attr_reader :user, :scope
+# class Scope
+  # attr_reader :user, :scope
 
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
+  # def initialize(user, scope)
+  #   @user = user
+  #   @scope = scope
+  # end
 
-    def resolve
-      scope
-    end
-  end
+  # def resolve
+  #   scope
+  # end
+end
 end
 

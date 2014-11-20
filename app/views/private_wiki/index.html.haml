@@ -1,6 +1,6 @@
 %h1 All Private Wikis related to #{current_user.name || current_user.email}
 %br
-- if policy(Wiki.new).create?
+- if current_user
   = link_to 'Create Public Wiki', new_wiki_path, class: 'btn btn-success'
 - if current_user && current_user.premium
   = link_to 'Create Private Wiki', private_wiki_new_path, class: 'btn btn-success'

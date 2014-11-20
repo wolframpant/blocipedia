@@ -7,6 +7,9 @@
 %br
 - @wikis.each do |wiki|
   %h1= link_to wiki.title, wiki
+  - if @user.creator?(wiki, @user)
+    = link_to "Edit", edit_wiki_path
+    = link_to "Delete", wiki, method: delete, remote: true
   %p
     = markdown(wiki.body) 
   %h5 

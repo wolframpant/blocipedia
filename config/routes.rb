@@ -1,13 +1,15 @@
 Blocipedia::Application.routes.draw do
   devise_for :users
   
-  resources :wikis, only: [:index, :show, :new, :create, :update, :edit]
+  resources :wikis, only: [:index, :show, :new, :create, :update, :edit, :destroy]
   resources :charges, only: [:new, :create]
 
   get "private_wiki/new"
   get "private_wiki/create"
   get "private_wiki/show"
   get "private_wiki/index"
+  patch "relationships/new"
+  get 'collaborators' => 'wikis#collaborator_list'
   
   get 'mine' => 'wikis#my_wikis'
 

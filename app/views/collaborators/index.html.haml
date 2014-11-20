@@ -1,0 +1,8 @@
+%h1 Collaborator List for Private Wiki "#{@wiki.title}"
+- for @wiki.relationships.each do |r|
+  - if !r.created_creator do
+    %h3 r.user.email
+This is the end of the file
+
+   
+

@@ -10,5 +10,6 @@
   ago
 = link_to "Back to Index", wikis_path
 %br
-- if policy(@wiki).edit?
+- if current_user.creator?(@wiki, current_user)
   = link_to "Edit", edit_wiki_path, class: 'btn btn-success'
+

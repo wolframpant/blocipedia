@@ -1,0 +1,5 @@
+%h1 Add Collaborators to Your Private Wiki
+
+- form_for @relationships do |f|
+  = f.select(:user_id, options_for_select(@user_options))
+  = f.submit 'Save'
