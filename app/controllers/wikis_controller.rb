@@ -2,18 +2,19 @@ class WikisController < ApplicationController
   respond_to :html, :js
 
   def destroy
-    @wiki = Wiki.find(params[:wiki_id])
-    authorize @wiki
-
+    @wiki = Wiki.find(params[:id])
+    
     if @wiki.destroy
       flash[:notice] = "Your Wiki has been removed."
+      redirect_to wikis_path
     else
       flash[:error] = "Wiki couldn't be deleted. Please try again."
+      redirect_to wikis_path
     end
 
-    respond_with(@wiki) do |format|
-      format.html {redirect_to[@wiki]}
-    end
+    # respond_with(@wiki) do |format|
+    #   format.html {redirect_to[@wiki.id]}
+    # end
 
   end
 

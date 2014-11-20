@@ -1,5 +1,1 @@
-<% if @wiki.destroyed? %>
-  $('#wiki-' +<%= @wiki.id %>).hide();
-<% else %>
-  $('#wiki-' +<%= @wiki.id%>).prepend("<div class='alert alert-error><%= flash[:error] %></div");
-<% end %>
+$('#wiki-' +<%= @wiki.id %>).hide();
