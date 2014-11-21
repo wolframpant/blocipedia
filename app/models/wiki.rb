@@ -8,4 +8,8 @@ class Wiki < ActiveRecord::Base
   validates :title, presence: true
   validates :body, presence: true
 
+  def personal?
+    personal==true
+  end
+
 end

@@ -2,8 +2,9 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
+    raise Pundit::NotAuthorizedError, 'You must be logged in.' unless user
     @user = user
-    @record = record
+    @wiki = wiki
   end
 
   def view_personal?
@@ -15,7 +16,6 @@ class ApplicationPolicy
   end
 
   def index?
-    false
   end
 
   def show?
@@ -31,12 +31,20 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present? && user.creator?(record, user)
+    user.present? && (user.creator?(wiki, user) || user.admin?)
   end
 
   def update_personal?
-    user.present? && user.premium? && (user.creator?(record, user) || user.collaborator(record, user))
+    user.present? && user.premium? && (user.creator?(wiki, user) || user.collaborator?(wiki, user))
   end 
+
+  def new_personal?
+    create_personal?
+  end
+
+  def create_personal?
+    user.present? && user.premium?
+  end
 
   def add_collaborators?
     user.present? && user.premium? && user.creator?(record, user)
@@ -49,17 +57,6 @@ class ApplicationPolicy
     record.class
   end
 
-# class Scope
-  # attr_reader :user, :scope
-
-  # def initialize(user, scope)
-  #   @user = user
-  #   @scope = scope
-  # end
-
-  # def resolve
-  #   scope
-  # end
 end
 end
 

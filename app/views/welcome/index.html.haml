@@ -2,4 +2,15 @@
 .jumbotron
   %h1 Blocipedia
   %p Blocipedia is a resource for creating and maintaining user wikis
+  .signupbox
+    %h3 Create and share Markdown Wikis.
+    %br
+    = link_to"Sign Up", new_user_registration_path, class: 'btn btn-success'
+  .row
+    .col-md-6
+      %h3 Create as many public wikis as you want!
+      = link_to "Free Plan", new_user_registration_path, class: 'btn btn-success'
+    .col-md-6
+      %h3 Create and share private wikis!
+      = link_to "Premium Plan", new_charge_path, class: 'btn btn-success'
  

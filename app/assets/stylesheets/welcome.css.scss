@@ -1,3 +1,16 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.signupbox {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  padding: 30px;
+  text-align: center;
+  background-color: #40FF40;
+}
+
+.btn-success {
+  background-color: #FF0000;
+}
+
+.col-md-6 {
+  text-align: center;
+}

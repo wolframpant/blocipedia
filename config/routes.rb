@@ -8,6 +8,8 @@ Blocipedia::Application.routes.draw do
   get "private_wiki/create"
   get "private_wiki/show"
   get "private_wiki/index"
+  get "private_wiki/destroy"
+  delete "private_wiki/destroy"
   patch "relationships/new"
   get 'collaborators' => 'wikis#collaborator_list'
   

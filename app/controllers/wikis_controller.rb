@@ -23,10 +23,6 @@ class WikisController < ApplicationController
     @user = current_user
   end
 
-  def collaborator_list
-    @wiki=Wiki.find_by(params[:id])
-  end
-
   def my_wikis
     @wikis = current_user.wikis.where(relationships: {creator_created: true})
   end
@@ -37,6 +33,7 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
 
   def create
