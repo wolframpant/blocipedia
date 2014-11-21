@@ -35,7 +35,7 @@ class ApplicationPolicy
   end
 
   def update_personal?
-    user.present? && user.premium? && (user.creator?(wiki, user) || user.collaborator?(wiki, user))
+    user.present? && user.premium? && (user.creator?(wiki, user) || user.collaborator?(wiki, user) || user.admin?)
   end 
 
   def new_personal?
@@ -43,11 +43,11 @@ class ApplicationPolicy
   end
 
   def create_personal?
-    user.present? && user.premium?
+    user.present? && (user.premium? || user.admin?)
   end
 
   def add_collaborators?
-    user.present? && user.premium? && user.creator?(record, user)
+    user.present? && ((user.premium? && user.creator?(record, user)) || user.admin?)
 
   def destroy?
     update?

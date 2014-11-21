@@ -24,7 +24,7 @@ end
   end
 
   def update?
-    user.present? && (user.admin? or user.creator?(record, user))
+    user.present? && (user.admin? || user.creator?(record, user))
   end
 end
 
