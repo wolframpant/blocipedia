@@ -1,5 +1,7 @@
 class Amount < ActiveRecord::Base
 
-def default
-  @amount = 500
+  def default
+    @amount = 500
+  end
+
 end
