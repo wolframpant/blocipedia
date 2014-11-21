@@ -8,19 +8,17 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  context "standard" do
-    it "should be able to see 'View My Wikis" do
-      user = create(:user, role: "standard")
-      visit root_path
-      expect(page).to have_content "View My Wikis"
+  context "#admin?" do
+    it "returns true when role is admin" do
+      user = User.new(role: 'admin')
+      expect(user.admin?).to eq(true)
+    end
+    it "returns false when role is not admin" do
+      user = User.new(role: 'standard')
+      expect(user.admin?).to eq(false)
     end
   end
 
-  context "premium" do
-    it "should be able to see 'View Private Wikis'" do
-      user = create(:user, role: "premium")
-      visit root_path
-      expect(page).to have_content "View Private Wikis"
-    end
-  end
+
+
 end

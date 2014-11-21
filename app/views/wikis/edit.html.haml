@@ -12,6 +12,6 @@
   = f.text_area :body, cols: 140, rows: 10
   %br
   %p Select collaborators:
-  = f.collection_check_boxes :user_ids, User.all, :id, :email
+  = f.collection_check_boxes :user_ids, User.where(role: "premium"), :id, :email
   %br
   = f.submit 'Save and Parse'

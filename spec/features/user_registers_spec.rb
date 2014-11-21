@@ -3,7 +3,9 @@ require 'rails_helper'
 feature "user registers" do
   scenario "allows individual to register for Blocipedia" do
     visit root_path
-    click_on('Sign Up')
+    within '.signupbox' do
+      click_on('Sign Up')
+    end
     fill_in 'Name', with: 'Joe Schmoe'
     fill_in 'Email', with: 'abc@example.com'
     fill_in 'Password', with: 'helloworld'

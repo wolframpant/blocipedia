@@ -13,6 +13,6 @@
   = f.hidden_field :personal, :value => true
   %br
   %p Select collaborators:
-  = f.collection_check_boxes :user_ids, User.all, :id, :email
+  = f.collection_check_boxes :user_ids, User.where(role: 'premium'), :id, :email
   %br
   = f.submit 'Save and Parse'
