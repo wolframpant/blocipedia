@@ -1,21 +1,17 @@
-class PrivateWikiController < ApplicationController
+class PrivateWikiController < ApplicationController  
+
   def new
-    @wiki = Wiki.new
-    @wiki.personal = true
-  end
-
-  def create
-  end
-
-  def show
+    @wiki = Wiki.new(personal: true)
+    authorize(@wiki)
   end
 
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.where(personal: true)
   end
 
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize(@wiki)
     
     if @wiki.destroy
       flash[:notice] = "Your Wiki has been removed."

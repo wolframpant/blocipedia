@@ -1,8 +1,8 @@
 class WikisController < ApplicationController
-  respond_to :html, :js
-
+  
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize(@wiki)
     
     if @wiki.destroy
       flash[:notice] = "Your Wiki has been removed."
@@ -11,10 +11,6 @@ class WikisController < ApplicationController
       flash[:error] = "Wiki couldn't be deleted. Please try again."
       redirect_to wikis_path
     end
-
-    # respond_with(@wiki) do |format|
-    #   format.html {redirect_to[@wiki.id]}
-    # end
 
   end
 
@@ -45,21 +41,20 @@ class WikisController < ApplicationController
       redirect_to @wiki
     else
       flash[:notice] = 'Please enter both a title and a body for your Wiki.'
-      render :new
+      render :create
     end
   end
 
   def edit
     @wiki = Wiki.find(params[:id])
     @user_options = User.all.map{|u|[u.name, u.id]}
+    authorize(@wiki)
   end
 
   def update
     @wiki = Wiki.find(params[:id])
+    authorize(@wiki)
     if @wiki.update_attributes(params.require(:wiki).permit(:title, :body, :personal, user_ids: []))
-      # if params(user.id)
-      #   @r = Relationship.new(wiki_id: @wiki.id, user_id: @user.id, collaborator: true)
-      # end
       redirect_to wiki_path
       flash[:notice] = "Success!"
     else

@@ -1,42 +1,23 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :user, :wiki
 
-  def initialize(user, record)
+  def initialize(user, wiki)
     raise Pundit::NotAuthorizedError, 'You must be logged in.' unless user
     @user = user
     @wiki = wiki
-  end
-
-  def view_personal?
-    update_personal?
   end
 
   def edit?
     update?
   end
 
-  def index?
-  end
-
   def show?
-    scope.where(:id => record.id).exists?
+    scope.where(:id => wiki.id).exists?
   end
 
   def create?
     user.present?
   end
-
-  def new?
-    create?
-  end
-
-  def update?
-    user.present? && (user.creator?(wiki, user) || user.admin?)
-  end
-
-  def update_personal?
-    user.present? && user.premium? && (user.creator?(wiki, user) || user.collaborator?(wiki, user) || user.admin?)
-  end 
 
   def new_personal?
     create_personal?
@@ -47,16 +28,32 @@ class ApplicationPolicy
   end
 
   def add_collaborators?
-    user.present? && ((user.premium? && user.creator?(record, user)) || user.admin?)
+    user.present? && (user.premium? || user.admin?)
+  end
+  
+  def destroy_personal?
+    user.present? && user.premium? && (user.creator?(wiki, user) || user.admin?)
+  end
+
+  def view_personal?
+    update_personal?
+  end
+
+  def update_personal?
+    user.present? && user.premium? && (user.creator?(wiki, user) || user.collaborator?(wiki, user) || user.admin?)
+  end
+
+  def new?
+    create?
+  end
+
+  def update?
+    user.present? && (user.creator?(wiki, user) || user.admin?)
+  end
 
   def destroy?
     update?
   end
 
-  def scope
-    record.class
-  end
-
-end
 end
 

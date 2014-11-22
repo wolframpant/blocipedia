@@ -1,5 +1,6 @@
 class WikiPolicy < ApplicationPolicy
   attr_reader :user, :wiki
+  
   class Scope
     attr_reader :user, :scope
 
@@ -17,14 +18,13 @@ class WikiPolicy < ApplicationPolicy
   end
 end
 
-
   def initialize(user, wiki)
     @user = user
     @wiki = wiki
   end
 
   def update?
-    user.present? && (user.admin? || user.creator?(record, user))
+    user.present? && (user.admin? || user.creator?(wiki, user))
   end
 end
 

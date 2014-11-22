@@ -12,7 +12,8 @@
   %br
   = f.hidden_field :personal, :value => true
   %br
-  %p Select collaborators:
-  = f.collection_check_boxes :user_ids, User.where(role: 'premium'), :id, :email
+  - if policy(@wiki).add_collaborators? 
+    %p Select collaborators:
+    = f.collection_check_boxes :user_ids, User.where(role: 'premium'), :id, :email
   %br
   = f.submit 'Save and Parse'
