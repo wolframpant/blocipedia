@@ -6,7 +6,7 @@
   = link_to 'Create Private Wiki', private_wiki_new_path, class: 'btn btn-success'
 %br
 - @wikis.each do |wiki|
-  - if wiki.personal && policy(wiki).view_personal?
+  - if policy(wiki).view_personal?
     %h1= link_to wiki.title, wiki
     - if current_user && (current_user.creator?(wiki, current_user) || current_user.admin? || current_user.collaborator?)
       = link_to 'Edit', edit_wiki_path({:id => wiki.id})
