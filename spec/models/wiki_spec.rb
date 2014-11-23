@@ -14,4 +14,19 @@ RSpec.describe Wiki, :type => :model do
       expect(Wiki.new).to validate_presence_of :body
     end
   end
+
+  context "personal?" do
+    it "should indicate whether a wiki is personal/private" do
+      wiki = Wiki.new(personal: true)
+      expect(wiki.personal?).to eq(true)
+    end
+  end
+
+  context "personal?" do
+    it "should indicate whether a wiki is personal/private" do
+      wiki = Wiki.new(personal: false)
+      expect(wiki.personal?).to eq(false)
+    end
+  end
+  
 end

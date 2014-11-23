@@ -19,6 +19,26 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  context "standard?" do
+    it "returns true when role is standard" do
+      user = User.new(role: 'standard')
+      expect(user.standard?).to eq(true)
+    end
+    it "returns false when role is not standard" do
+      user = User.new(role: 'admin')
+      expect(user.standard?).to eq(false)
+    end
+  end
 
+  context "premium?" do
+    it "returns true when role is premium" do
+      user = User.new(role: 'premium')
+      expect(user.premium?).to eq(true)
+    end
+    it "returns false when role is not premium" do
+      user = User.new(role: 'admin')
+      expect(user.premium?).to eq(false)
+    end
+  end
 
 end

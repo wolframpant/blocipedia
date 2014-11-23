@@ -20,7 +20,7 @@ class ChargesController < ApplicationController
       :currency => 'usd'
     )
 
-    u = @user.update(premium: true, stripe_id: customer.id)
+    u = @user.update(role: 'premium', stripe_id: customer.id)
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
