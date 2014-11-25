@@ -12,15 +12,4 @@ FactoryGirl.define do
       end
     end
   end
-
-  # factory :user do
-  #   name "Joe Schmo"
-  #   email "abc@sample.com"
-  #   password "helloworld"
-  #   confirm_password "helloworld"
-  #   confirm_at Time.now
-  # end
-
-
-
 end

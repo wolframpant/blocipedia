@@ -1,7 +1,10 @@
 require 'rails_helper'
+require 'spec_helper'
+include Warden::Test::Helpers
+Warden.test_mode!
 
 RSpec.describe WikisController, :type => :controller do
-
+  
   describe "GET index" do
     xit "returns http success" do
       get :index

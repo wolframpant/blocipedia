@@ -1,6 +1,6 @@
 %h1 Edit Wiki
 - if @wiki.personal
-  %h3 Personal
+  %h3 Private
 %br
 = form_for @wiki do |f| 
   = f.label :title
@@ -11,8 +11,8 @@
   %br
   = f.text_area :body, cols: 140, rows: 10
   %br
-  if current_user.creator?(@wiki, current_user) && policy(wiki).add_collaborators?
-  %p Select collaborators:
-  = f.collection_check_boxes :user_ids, User.where(role: "premium"), :id, :email
+  - if current_user.creator?(@wiki, current_user) && policy(wiki).add_collaborators?
+    %p Select collaborators:
+    = f.collection_check_boxes :user_ids, User.where(role: "premium"), :id, :email
   %br
   = f.submit 'Save and Parse'
