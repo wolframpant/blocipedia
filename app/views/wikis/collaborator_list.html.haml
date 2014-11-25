@@ -1,5 +1,0 @@
-%h1 Collaborator List for Private Wiki "#{@wiki.title}"
-- @wiki.relationships.reject(&:created_creator).each do |r| 
-  %h3= Users.email.where(relationship=r)
-
-

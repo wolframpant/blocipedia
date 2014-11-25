@@ -13,9 +13,17 @@ RSpec.describe WikisController, :type => :controller do
   end
 
   describe "GET show" do
-    xit "returns http success" do
-      get :show
+    it "returns http success" do
+      wiki=create(:wiki)
+      get :show, id: wiki.id
       expect(response).to have_http_status(:success)
+    end
+    it "assigns the correct wiki to the view" do
+      wiki1 = create(:wiki)
+      wiki2 = create(:wiki)
+      get :show, id: wiki2.id
+      expect(assigns(:wiki)).to eq(wiki2)
+      expect(assigns(:wiki)).not_to eq(wiki1)
     end
   end
 
