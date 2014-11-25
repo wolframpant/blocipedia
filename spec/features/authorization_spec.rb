@@ -43,6 +43,7 @@ feature "Premium Users have access" do
     wiki = create(:wiki, personal: true)
     login_as(user, :scope => :user)
     visit (edit_wiki_path(wiki))
+    expect(current_path).to eq(root_path)
     expect(page).to have_content("Blocipedia is a resource for creating and maintaining user wikis")
   end
 
