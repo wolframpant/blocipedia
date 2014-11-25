@@ -18,7 +18,7 @@ feature "Premium Users have access" do
   scenario "it allows premium users to edit Private Wikis" do
     wiki = create(:wiki, personal: true)
     user = create(:user, role: 'premium')
-    r = create(:relationship, wiki_id: wiki.id, user_id: user.id)
+    r = create(:relationship, wiki_id: wiki.id, user_id: user.id, creator_created: true)
     login_as(user, :scope => :user)
     visit root_path
     click_on('View Private Wikis')
@@ -33,9 +33,17 @@ feature "Premium Users have access" do
     wiki = create(:wiki, personal: true)
     r = create(:relationship, wiki_id: wiki.id, user_id: user.id, creator_created: true)
     login_as(user, :scope => :user)
-    visit (edit_wiki_path(:id => wiki.id))
+    visit (edit_wiki_path(wiki))
     expect(page).to have_content('Private')
     expect(page).to have_content("Select collaborators")
+  end
+
+  scenario "it doesn't allow standard users to edit Private Wikis" do
+    user = create(:user, role: 'standard')
+    wiki = create(:wiki, personal: true)
+    login_as(user, :scope => :user)
+    visit (edit_wiki_path(wiki))
+    expect(page).to have_content("Blocipedia is a resource for creating and maintaining user wikis")
   end
 
 end
