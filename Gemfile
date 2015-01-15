@@ -40,7 +40,7 @@ gem 'redcarpet'
 
 gem 'stripe'
 
-gem 'friendly_id', '~> 5.0.0'
+gem 'friendly_id', '~> 5.0.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'

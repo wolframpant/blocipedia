@@ -203,7 +203,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   faker
   figaro (= 1.0)
-  friendly_id (~> 5.0.0)
+  friendly_id (~> 5.0.4)
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails

@@ -1,12 +1,13 @@
-%h1 New Wiki
-%br
-= form_for @wiki do |f| 
-  = f.label :title
+.container
+  %h1 New Wiki
   %br
-  = f.text_field :title, placeholder: 'Title', size: 50
-  %br
-  = f.label :body
-  %br
-  = f.text_area :body, placeholder: 'Body', cols: 140, rows: 10
-  %br
-  = f.submit 'Save and Parse'
+  = form_for @wiki do |f| 
+    = f.label :title
+    %br
+    = f.text_field :title, placeholder: 'Title', size: 50
+    %br
+    = f.label :body
+    %br
+    = f.text_area :body, placeholder: 'Body', cols: 140, rows: 10
+    %br
+    = f.submit 'Save and Parse'

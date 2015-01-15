@@ -37,12 +37,14 @@
               %span.glyphicon.glyphicon-log-out
           - else
             = link_to "Sign In", new_user_session_path 
-            = link_to "Sign Up", new_user_registration_path
+            &nbsp;
+            = link_to "Sign Up (free)", new_user_registration_path
       
   
-  %p= flash[:notice] if flash[:notice]
+    .notices
+      %p= flash[:notice] if flash[:notice]
 
 
-  = yield 
+    = yield 
 
     

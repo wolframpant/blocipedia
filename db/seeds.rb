@@ -14,8 +14,8 @@ require 'faker'
 end
 
 user = User.new(
-  name: Faker::Name.name,
-  email: Faker::Internet.email,
+  name: "Ellen",
+  email: "llnwlfsn@gmail.com",
   password: "helloworld",
   password_confirmation: "helloworld",
   role: "admin"
@@ -60,8 +60,6 @@ wikis.each do |wiki|
   )
 
 end
-
-
     
   puts "Seed finished"
   puts "#{wikis.count} wikis created"
