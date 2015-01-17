@@ -16,4 +16,4 @@
       %p Select collaborators:
       = f.collection_check_boxes :user_ids, User.where(role: "premium"), :id, :email
     %br
-    = f.submit 'Save and Parse'
+    = f.submit 'Save'
