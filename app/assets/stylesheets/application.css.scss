@@ -15,8 +15,8 @@
 @import "bootstrap";
   
 body {
-  background-color: #e3d096;
-  color: #100324;
+  background-color: #29203f;
+  color: #f9eed8;
 }
 
 .nav a {
@@ -24,26 +24,38 @@ body {
 }
 
 a {
-  color: #f77560;
+  color: #fbc437;
 }
 
 a:hover {
   font-weight: bold;
-  color: #f77560;
+  color: #fbc437;
   text-decoration: none;
 }
 
 .btn-primary {
-  background-color: #ffb885;
+  background-color: #e48e7d;
 }
 
 .btn-primary:hover {
-  background-color: #803367;
+  background-color: #964656;
 }
 
 .notices {
-  background-color: #803367;
-  color: white;
+  background-color: #f9eed8;
+  color: #070a12;
   font-size: 125%;
   margin: 5px 5px 5px 25px;
+}
+
+.pull-right {
+  margin-top: 10px;
+}
+
+form {
+  color: #ecb681;
+}
+
+input, textarea {
+  color: #070a12;
 }

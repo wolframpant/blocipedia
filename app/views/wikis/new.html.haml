@@ -1,13 +1,24 @@
 .container
-  %h1 New Wiki
-  %br
-  = form_for @wiki do |f| 
-    = f.label :title
-    %br
-    = f.text_field :title, placeholder: 'Title', size: 50
-    %br
-    = f.label :body
-    %br
-    = f.text_area :body, placeholder: 'Body', cols: 140, rows: 10
-    %br
-    = f.submit 'Save'
+  .row
+    .col-md-9
+      %h1 New Wiki
+      %br
+      %p Feel free to use Markdown to format your wiki. The following link can help you do this, if you like:
+      = link_to 'A basic guide to Markdown syntax', 'https://guides.github.com/features/mastering-markdown'
+      %p It's also fine, of course, simply to use basic text for your content.
+      = form_for @wiki do |f| 
+        = f.label :title
+        %br
+        = f.text_field :title, placeholder: 'Title', size: 50
+        %br
+        = f.label :body
+        %br
+        = f.text_area :body, placeholder: 'Body', cols: 120, rows: 12
+        %br
+        = f.submit 'Save'
+      
+    .col-md-3
+      //= link_to 'Add Image', new_image_path(:wiki_id => @wiki.id), class: 'btn btn-success'
+      .italic As a creator or collaborator of a wiki may add as many images to your wiki as you like, either here, in the Edit Wiki form, or from the Wiki page directly. 
+    
+    

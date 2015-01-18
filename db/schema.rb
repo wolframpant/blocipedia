@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120155132) do
+ActiveRecord::Schema.define(version: 20150117220641) do
+
+  create_table "images", force: true do |t|
+    t.string  "name"
+    t.string  "location"
+    t.integer "wiki_id"
+  end
+
+  add_index "images", ["wiki_id"], name: "index_images_on_wiki_id"
 
   create_table "relationships", force: true do |t|
     t.integer "wiki_id"
