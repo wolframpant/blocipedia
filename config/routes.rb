@@ -15,6 +15,7 @@ Blocipedia::Application.routes.draw do
   get 'collaborators' => 'wikis#collaborator_list'
   
   get 'mine' => 'wikis#my_wikis'
+  get 'options' => 'wikis#options'
 
   root "welcome#index"
 

@@ -15,25 +15,21 @@
         %li
           = link_to "Blocipedia", root_path
         %li
-          = link_to "View Public Wikis", wikis_path
+          = link_to "Public Wikis", wikis_path
         - if current_user
           %li
-            = link_to "View My Wikis", mine_path
-          %li
-            = link_to "Create Public Wiki", new_wiki_path
+            = link_to "Create Wiki", options_path
         -if current_user && !current_user.premium?
           %li
             = link_to "Become a PREMIUM member!", new_charge_path
         -if current_user && current_user.premium?
           %li
-            = link_to "Create Private Wiki", private_wiki_new_path
-          %li
-            = link_to "View Private Wikis", private_wiki_index_path
+            = link_to "Private Wikis", private_wiki_index_path
 
         .pull-right.user-info
           - if current_user
             = image_tag(current_user.avatar.tiny.url) if current_user.avatar?
-            =link_to current_user.name || current_user.email, edit_user_registration_path
+            =link_to current_user.name || current_user.email, mine_path
             =link_to edit_user_registration_path, class: 'btn btn-primary bt-sm' do
               %span.glyphicon.glyphicon-user
             = link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do

@@ -1,5 +1,5 @@
 .container
-  %h1 All (Public & Private) Wikis Created by #{current_user.name || current_user.email}
+  %h1 All (Public & Private) Wikis Created by #{current_user.name || current_user.email} #{image_tag(current_user.avatar.profile.url)}
   %br
   - if policy(Wiki.new).create?
     = link_to 'New Wiki', new_wiki_path, class: 'btn btn-success'

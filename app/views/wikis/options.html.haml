@@ -1,0 +1,12 @@
+.container
+  %h1 Create a Wiki
+  %br
+  - if policy(Wiki.new).create?
+    = link_to 'New Public Wiki', new_wiki_path, class: 'btn btn-success'
+  - if current_user && current_user.premium?
+    = link_to 'New Private Wiki', private_wiki_new_path, class: 'btn btn-success'
+  
+  %br
+  %br
+    
+  %p If you are currently not signed up with our site, you may view any Public Wiki, but may not create one. To create Public Wikis, please click "Sign Up" in the top right corner of the screen to sign up for our free plan. To be able to create Private Wikis and to share your Wikis with other collaborators, please first sign up for the free plan; you will then see an option in your navigation menu to "Become a Premium Member." This membership costs $5 a year.

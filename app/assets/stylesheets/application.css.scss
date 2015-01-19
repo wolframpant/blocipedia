@@ -15,8 +15,8 @@
 @import "bootstrap";
   
 body {
-  background-color: #2e1d00;
-  color:white;
+  background-color: #332850;
+  color: #f7e9cf;
 }
 
 ul {
@@ -25,33 +25,42 @@ ul {
 }
 
 a {
-  color: #b7ffff;
+  color: #f5dd78;
 }
 
 .nav a:hover {
-  color: #2e1d00;  
+  color: #332850;  
 }
 
 a:hover {
   font-weight: bold;
   border: none;
-  color: #b7ffff;
+  color: #f5dd78;
   text-decoration: none;
   background-color: #2e1d00;
 }
 
 .btn-primary {
-  background-color: #feffb8;
-  color: black;
+  background-color: #ce7f84;
+  color: white;
 }
 
 .btn-primary:hover {
-  background-color: #b7ffb8 ;
+  background-color: #db7957;
+  color: white;
+}
+
+.glyphicon:hover {
+  color: white;
+}
+
+.glyphicon a:hover {
+  color: white;
 }
 
 .notices {
-  background-color: #b7ffb8;
-  color: black;
+  background-color: #db7957;
+  color: white;
   font-size: 125%;
   margin: 5px 5px 5px 25px;
 }
@@ -61,11 +70,11 @@ a:hover {
 }
 
 .pull-right a:hover {
-  color: #b7ffff;
+  color: #f5dd78;
 }
 
 form {
-  color: white;
+  color: #f7e9cf;
 }
 
 input, textarea {
