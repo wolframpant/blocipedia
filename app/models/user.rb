@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
 
   has_many :relationships
   has_many :wikis, through: :relationships
+  
+  scope :createdor_of, -> {where(relationships: {creator_created: true})}
+  
+  mount_uploader :avatar, AvatarUploader
+
 
   def creator?(wiki, user)
     if Relationship.exists?(:wiki_id =>wiki.id, :user_id => user.id)

@@ -8,7 +8,8 @@
   %h4 
     Created 
     = time_ago_in_words(@wiki.created_at)
-    ago
+    ago by
+    = @wiki.creator.name
   - if @wiki.personal
     = link_to "Back to Index", private_wiki_index_path
   - else  

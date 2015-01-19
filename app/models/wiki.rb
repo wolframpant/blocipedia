@@ -15,9 +15,8 @@ class Wiki < ActiveRecord::Base
   end
   
   def creator
-    
-    r = Relationship.find_by((:wiki_id == self.id) && (:creator_created == true))
-    User.find_by(:id == r.user_id)
+    r = relationships.find_by((:wiki_id == self.id) && (:creator_created == true))
+    users.find_by(:id == r.user_id)
   end
   
 end

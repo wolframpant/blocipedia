@@ -28,6 +28,12 @@ gem 'bootstrap-sass', '~>3.2.0'
 
 gem 'figaro', '1.0'
 
+gem 'carrierwave'
+
+gem 'fog'
+
+gem 'mini_magick'
+
 gem 'faker'
 
 gem 'haml-rails'

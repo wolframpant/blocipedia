@@ -15,35 +15,43 @@
 @import "bootstrap";
   
 body {
-  background-color: #29203f;
-  color: #f9eed8;
+  background-color: #2e1d00;
+  color:white;
 }
 
-.nav a {
-  font-size: 125%;
+ul {
+  list-style: none;
+  font-size: 115%;
 }
 
 a {
-  color: #fbc437;
+  color: #b7ffff;
+}
+
+.nav a:hover {
+  color: #2e1d00;  
 }
 
 a:hover {
   font-weight: bold;
-  color: #fbc437;
+  border: none;
+  color: #b7ffff;
   text-decoration: none;
+  background-color: #2e1d00;
 }
 
 .btn-primary {
-  background-color: #e48e7d;
+  background-color: #feffb8;
+  color: black;
 }
 
 .btn-primary:hover {
-  background-color: #964656;
+  background-color: #b7ffb8 ;
 }
 
 .notices {
-  background-color: #f9eed8;
-  color: #070a12;
+  background-color: #b7ffb8;
+  color: black;
   font-size: 125%;
   margin: 5px 5px 5px 25px;
 }
@@ -52,10 +60,14 @@ a:hover {
   margin-top: 10px;
 }
 
+.pull-right a:hover {
+  color: #b7ffff;
+}
+
 form {
-  color: #ecb681;
+  color: white;
 }
 
 input, textarea {
-  color: #070a12;
+  color: black;
 }

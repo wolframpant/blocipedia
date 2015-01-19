@@ -14,5 +14,6 @@
     %h5 
       Created
       = time_ago_in_words(wiki.created_at)
-      ago 
+      ago by
+      = wiki.creator.name
 

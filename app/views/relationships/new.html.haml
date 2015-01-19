@@ -2,4 +2,5 @@
 
 - form_for @relationships do |f|
   = f.select(:user_id, options_for_select(@user_options))
+  = f.hidden_field :creator_created, :value => false
   = f.submit 'Save'
