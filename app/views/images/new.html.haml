@@ -1,0 +1,17 @@
+.container
+
+  %h1 New Image For #{@wiki.title}
+  
+  = form_for @image do |f|
+    = f.label :name
+    = f.text_field :name, size: 40
+    %br
+    = f.label "Choose an image file to upload. Acceptable file extensions are jpg, png, jpeg, and gif."
+    = f.file_field :location 
+    = f.hidden_field :location_cache 
+    %br
+    = f.hidden_field :user_id, :value => current_user.id
+    = f.hidden_field :wiki_id, :value => @wiki.id
+    %br
+    = f.submit 'Submit'
+    

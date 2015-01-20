@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150118211135) do
+ActiveRecord::Schema.define(version: 20150119204259) do
 
   create_table "images", force: true do |t|
     t.string  "name"
     t.string  "location"
     t.integer "wiki_id"
+    t.integer "user_id"
   end
 
   add_index "images", ["wiki_id"], name: "index_images_on_wiki_id"
