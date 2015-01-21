@@ -4,7 +4,7 @@ Blocipedia::Application.routes.draw do
   resources :wikis, only: [:index, :show, :new, :create, :update, :edit, :destroy]
   resources :charges, only: [:new, :create]
   resources :users, only: [:new, :create, :update, :destroy]
-  resources :images, only: [:new, :create, :destroy]
+  resources :images, only: [:new, :create, :show, :destroy]
 
   get "private_wiki/new"
   get "private_wiki/create"

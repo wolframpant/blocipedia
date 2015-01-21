@@ -21,4 +21,5 @@
         = f.submit 'Save'
       
       .col-md-3
-        = link_to 'Add Image', new_images_path(wiki_id:@wiki.id)
+        = link_to 'Add Image', new_image_path(:wiki_id => @wiki.id), class: 'btn btn-success'
+

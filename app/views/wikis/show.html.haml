@@ -1,20 +1,27 @@
 .container
-  %h1= @wiki.title
-  - if @wiki.personal
-    %h3 Personal
-  %br
-  %p
-    = markdown(@wiki.body)
-  %h4 
-    Created 
-    = time_ago_in_words(@wiki.created_at)
-    ago by
-    = @wiki.creator.name
-  - if @wiki.personal
-    = link_to "Back to Index", private_wiki_index_path
-  - else  
-    = link_to "Back to Index", wikis_path
-  %br
-  - if current_user && (current_user.creator?(@wiki, current_user) || current_user.admin?)
-    = link_to 'Edit', edit_wiki_path, class: 'btn btn-success'
+  .row
+    .col-md-7
+      %h1= @wiki.title
+      - if @wiki.personal
+        %h3 Personal
+      %br
+      %p
+        = markdown(@wiki.body)
+      %h4 
+        Created 
+        = time_ago_in_words(@wiki.created_at)
+        ago by
+        = @wiki.creator.name
+      - if @wiki.personal
+        = link_to "Back to Index", private_wiki_index_path
+      - else  
+        = link_to "Back to Index", wikis_path
+      %br
+      - if current_user && (current_user.creator?(@wiki, current_user) || current_user.admin?)
+        = link_to 'Edit', edit_wiki_path, class: 'btn btn-success'
 
+    .col-md-5
+      = link_to 'Add Image', new_image_path(:wiki_id => @wiki.id), class: 'btn btn-success'
+      %br
+      .wikiimage
+        

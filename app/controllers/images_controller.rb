@@ -31,6 +31,9 @@ class ImagesController < ApplicationController
     end
   end
   
+  def show
+    @image = Image.find_by(params [:id])
+  
   def index
     @images = Image.where(wiki_id:wiki.id)
   end
