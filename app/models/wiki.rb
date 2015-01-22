@@ -2,6 +2,7 @@ class Wiki < ActiveRecord::Base
 
   has_many :relationships
   has_many :users, through: :relationships
+  has_many :images
   
   default_scope { order('created_at DESC')}
 
@@ -15,8 +16,7 @@ class Wiki < ActiveRecord::Base
   end
   
   def creator
-    r = relationships.find_by((:wiki_id == self.id) && (:creator_created == true))
-    users.find_by(:id == r.user_id)
+    self.relationships.find_by(:creator_created == true).user
   end
   
 end

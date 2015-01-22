@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :relationships
   has_many :wikis, through: :relationships
+  has_many :images
   
   scope :createdor_of, -> {where(relationships: {creator_created: true})}
   
