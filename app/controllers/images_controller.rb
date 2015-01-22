@@ -2,6 +2,7 @@ class ImagesController < ApplicationController
 
   def new
     @image = Image.new(user_id:current_user.id)
+    @wiki = Wiki.find_by(params[:id])
     authorize @image
   end
   
@@ -40,4 +41,4 @@ class ImagesController < ApplicationController
   def image_params
     params.require(:image).permit(:name, :location, :wiki_id, :user_id)
   end
-  
+end

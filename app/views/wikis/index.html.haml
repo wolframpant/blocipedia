@@ -15,6 +15,6 @@
       Created
       = time_ago_in_words(wiki.created_at)
       ago by
-      = image_tag(wiki.creator.avatar.tiny.url) 
+      = image_tag(wiki.creator.avatar.tiny.url) if wiki.creator.avatar?
       = wiki.creator.name
 
