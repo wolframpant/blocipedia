@@ -62,9 +62,8 @@ wikis.each do |w|
     wiki: w,
     creator_created: true
   )
-relationships = Relationship.all
-
 end
+relationships = Relationship.all
     
   puts "Seed finished"
   puts "#{wikis.count} wikis created"
