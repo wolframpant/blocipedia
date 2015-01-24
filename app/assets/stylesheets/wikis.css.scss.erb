@@ -2,11 +2,12 @@
 .wikiimage {
   float: right;
   text-align: center;
-}
-
-#centerbtn {
-  text-align: center;
-  margin: auto auto;
+  padding: 5px;
+  margin: 5px;
+  border: outset;
+  border-width: 3px;
+  border-color: #700548;
+  background-image: url('<%= asset_path("silver-white-pattern.jpg") %>');
 }
 
 #wikibody {
@@ -14,13 +15,10 @@
   border-style: outset;
   border-width: 10px;
   padding: 10px;
-  border-color: #7202AE;
+  border-color: #700548;
   background-image: url('<%= asset_path("silver-white-pattern.jpg") %>');
 }
 
-.col-md-5 {
-  border-style: solid;
-  border-width: 0 0 0 5px;
-  border-color: #7202AE;
-  height: 100%;
+.italic {
+  font-style: italic;
 }

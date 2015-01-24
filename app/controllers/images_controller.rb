@@ -1,8 +1,8 @@
 class ImagesController < ApplicationController
 
   def new
-    @image = Image.new(user_id:current_user.id)
     @wiki = Wiki.find_by(params[:id])
+    @image = Image.new
     authorize @image
   end
   
@@ -21,11 +21,12 @@ class ImagesController < ApplicationController
   
   def destroy
     @image = Image.find(params[:id])
+    
     authorize(@image)
     
     if @image.destroy
       flash[:notice] = "Your Image has been removed."
-      redirect_to wikis_path
+      redirect_to :back
     else
       flash[:error] = "Image couldn't be deleted. Please try again."
       redirect_to wikis_path
@@ -33,7 +34,9 @@ class ImagesController < ApplicationController
   end
   
   def show
-    @image = Image.find_by(params [:id])
+    @image = Image.find(params[:id])
+    @wiki = @image.wiki
+  end
   
   def index
     @images = Image.where(wiki_id:wiki.id)

@@ -25,6 +25,8 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    @images = Image.where(wiki_id: @wiki.id)
+    @image = Image.new
   end
 
   def new

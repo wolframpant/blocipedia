@@ -12,8 +12,7 @@
 
     .container
       %ul.nav.nav-tabs
-        %li
-          = link_to "Blocipedia", root_path
+        <li class="bloclink" onclick="imageSlider.reload()"> #{link_to "Blocipedia", root_path}</li>
         %li
           = link_to "Public Wikis", wikis_path
         - if current_user
@@ -22,7 +21,7 @@
         -if current_user && !current_user.premium?
           %li
             = link_to "Become a PREMIUM member!", new_charge_path
-        -if current_user && current_user.premium?
+        -if current_user && (current_user.premium? || current_user.admin?)
           %li
             = link_to "Private Wikis", private_wiki_index_path
 
