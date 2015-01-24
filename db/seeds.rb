@@ -1,6 +1,6 @@
 require 'faker'
 
-# Create Users
+# Create standard Users
 5.times do
   user = User.new(
     name: Faker::Name.name,
@@ -23,6 +23,7 @@ user = User.new(
   user.skip_confirmation!
   user.save!
 
+#5 premium users
 5.times do
   user = User.new(
     name: Faker::Name.name,
@@ -36,7 +37,7 @@ user = User.new(
 end
 users = User.all
 
-#Create Wikis
+#Create Public Wikis
 50.times do
   Wiki.create!(
     title: Faker::Lorem.sentence,
@@ -44,6 +45,7 @@ users = User.all
 )
 end
 
+# 50 Private Wikis
 50.times do
   Wiki.create!(
     title: Faker::Lorem.sentence,
@@ -53,10 +55,11 @@ end
 end
 wikis = Wiki.all
 
+# make sure each wiki has a creator
 wikis.each do |w|
   Relationship.create!(
     user: users.sample,
-    wiki: wikis.sample,
+    wiki: w,
     creator_created: true
   )
 relationships = Relationship.all
