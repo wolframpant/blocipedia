@@ -59,6 +59,7 @@ wikis.each do |w|
     wiki: wikis.sample,
     creator_created: true
   )
+relationships = Relationship.all
 
 end
     
