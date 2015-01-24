@@ -32,19 +32,20 @@
         = markdown(@wiki.body)
   
     .col-md-5
-      %h3 New Image 
-      = form_for @image, :html => {:multipart => true}  do |f|
-        = f.label :name
-        = f.text_field :name, size: 40
-        %br
-        %br
-        %p Choose an image file to upload. Acceptable file extensions are jpg, png, jpeg, and gif.
-        = f.file_field :location 
+      - if policy(Image.new).create?
+        %h3 New Image 
+        = form_for @image, :html => {:multipart => true}  do |f|
+          = f.label :name
+          = f.text_field :name, size: 40
+          %br
+          %br
+          %p Choose an image file to upload. Acceptable file extensions are jpg, png, jpeg, and gif.
+          = f.file_field :location 
 
-        = f.hidden_field :user_id, :value => current_user.id
-        = f.hidden_field :wiki_id, :value => @wiki.id
+          = f.hidden_field :user_id, :value => current_user.id
+          = f.hidden_field :wiki_id, :value => @wiki.id
 
-        = f.submit 'Submit'
+          = f.submit 'Submit'
 
         %h3 Images <span class="italic small">(click on the thumbnail to see a larger version)</span>
         %br

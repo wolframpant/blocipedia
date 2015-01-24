@@ -3,7 +3,7 @@
   %br
   - if policy(Wiki.new).create?
     = link_to 'New Wiki', new_wiki_path, class: 'btn btn-success'
-  - if policy(Wiki.new).new_personal?
+  - if current_user && (current_user.premium? || current_user.admin?)
     = link_to 'New Private Wiki', private_wiki_new_path, class: 'btn btn-success'
   %br
   - @wikis.each do |wiki|

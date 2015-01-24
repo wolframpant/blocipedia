@@ -1,5 +1,4 @@
 .container
-
   %h1.Blocipedia Blocipedia
   
   #sliderFrame
@@ -11,10 +10,13 @@
       = image_tag("Slide D.jpg", :alt => "Add your own images to your wikis!")
       = image_tag("Slide F.jpg", :alt => "Format your wikis using Markdown language.")
   %br
-  .row
-    .col-md-6
-      %h3 Create as many public wikis as you want!
-      = link_to "Free Plan", new_user_registration_path, class: 'btn btn-success'
-    .col-md-6
-      %h3 Create and share private wikis!
-      = link_to "Premium Plan", new_charge_path, class: 'btn btn-success'
+  - if current_user
+    %h3.center You can create and edit Public Wikis as a Standard (free) member. To create Private Wikis and collaborate on them with others, try our #{link_to "Premium Plan", new_charge_path, class: "huge"}.
+  - else
+    .row
+      .col-md-6
+        %h3 Create as many public wikis as you want!
+        = link_to "Free Plan", new_user_registration_path, class: 'btn btn-success'
+      .col-md-6
+        %h3 Create and share private wikis!
+        = link_to "Premium Plan", new_charge_path, class: 'btn btn-success'

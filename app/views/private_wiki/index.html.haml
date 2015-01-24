@@ -1,16 +1,17 @@
-%h1 All Private Wikis related to #{current_user.name || current_user.email}
-%br
-- if current_user
-  = link_to 'Create Public Wiki', new_wiki_path, class: 'btn btn-success'
-- if current_user && current_user.premium?
-  = link_to 'Create Private Wiki', private_wiki_new_path, class: 'btn btn-success'
-%br
-- @wikis.each do |wiki|
-  - if policy(wiki).view_personal?
-    %h1= link_to wiki.title, wiki
-    - if current_user && (current_user.creator?(wiki, current_user) || current_user.admin? || current_user.collaborator?)
-      = link_to 'Edit', edit_wiki_path({:id => wiki.id})
-    - if current_user && (current_user.creator?(wiki, current_user) || current_user.admin?)
-      = link_to 'Delete', {:id => wiki.id, :action => 'destroy'}, :method => :delete, data: {confirm: 'Do you want to delete this Wiki?'}
-    %h5 Created #{time_ago_in_words(wiki.created_at)} ago by #{wiki.creator.avatar.tiny.url if wiki.creator.avatar?} #{wiki.creator.name}
+.container
+  %h1 All Private Wikis related to #{current_user.name || current_user.email}
+  %br
+  - if current_user
+    = link_to 'Create Public Wiki', new_wiki_path, class: 'btn btn-success'
+  - if current_user && (current_user.premium? || current_user.admin?)
+    = link_to 'Create Private Wiki', private_wiki_new_path, class: 'btn btn-success'
+  %br
+  - @wikis.each do |wiki|
+    - if policy(wiki).view_personal?
+      %h1= link_to wiki.title, wiki
+      - if current_user && (current_user.creator?(wiki, current_user) || current_user.admin? || current_user.collaborator?)
+        = link_to 'Edit', edit_wiki_path({:id => wiki.id})
+      - if current_user && (current_user.creator?(wiki, current_user) || current_user.admin?)
+        = link_to 'Delete', {:id => wiki.id, :action => 'destroy'}, :method => :delete, data: {confirm: 'Do you want to delete this Wiki?'}
+      %h5 Created #{time_ago_in_words(wiki.created_at)} ago by #{wiki.creator.avatar.tiny.url if wiki.creator.avatar?} #{wiki.creator.name}
 

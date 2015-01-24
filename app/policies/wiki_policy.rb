@@ -42,7 +42,16 @@ end
   def add_collaborators?
     user.present? && user.creator?(wiki, user)
   end
-  
+    
 end
+
+
+
+
+
+
+
+
+
 
 

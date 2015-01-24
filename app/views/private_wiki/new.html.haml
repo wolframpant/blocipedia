@@ -1,19 +1,22 @@
-%h1 Private Wiki
-%br
+.container
+  %h1 Private Wiki
+  %br
+  %p Feel free to use Markdown to format your wiki. The following link can help you do this, if you like: #{link_to 'A basic guide to Markdown syntax', 'https://guides.github.com/features/mastering-markdown'}
+  %p It's also fine, of course, simply to use basic text for your content.
 
-= form_for @wiki do |f| 
-  = f.label :title
-  %br
-  = f.text_field :title, :size => 50, placeholder: 'Title', cols: 60
-  %br
-  = f.label :body
-  %br
-  = f.text_area :body, placeholder: 'Body', cols: 140, rows: 10
-  %br
-  = f.hidden_field :personal, :value => true
-  %br
-  - if policy(@wiki).add_collaborators? 
-    %p Select collaborators:
-    = f.collection_check_boxes :user_ids, User.where(role: 'premium'), :id, :email
-  %br
-  = f.submit 'Save and Parse'
+  = form_for @wiki do |f| 
+    = f.label :title
+    %br
+    = f.text_field :title, :size => 50, placeholder: 'Title', cols: 60
+    %br
+    = f.label :body
+    %br
+    = f.text_area :body, placeholder: 'Body', cols: 140, rows: 10
+    %br
+    = f.hidden_field :personal, :value => true
+    %br
+    - if policy(@wiki).add_collaborators? 
+      %p Select collaborators:
+      = f.collection_check_boxes :user_ids, User.where(role: 'premium'), :id, :email
+    %br
+    = f.submit 'Save'

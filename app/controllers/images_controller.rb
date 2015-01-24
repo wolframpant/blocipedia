@@ -12,7 +12,7 @@ class ImagesController < ApplicationController
     authorize(@image)
     if @image.save
       flash[:notice] = "Your new Image was saved."
-      redirect_to @wiki
+      redirect_to :back
     else
       flash[:notice] = 'Please enter both a title and a body for your Wiki.'
       render :create

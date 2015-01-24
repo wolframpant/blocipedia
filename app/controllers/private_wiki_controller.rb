@@ -6,7 +6,7 @@ class PrivateWikiController < ApplicationController
   end
 
   def index
-    @wikis = Wiki.where(personal: true)
+    @wikis = current_user.wikis.where(personal: true)
   end
 
   def destroy
