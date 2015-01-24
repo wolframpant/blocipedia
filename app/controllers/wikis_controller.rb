@@ -44,7 +44,7 @@ class WikisController < ApplicationController
       redirect_to @wiki
     else
       flash[:notice] = 'Please enter both a title and a body for your Wiki.'
-      render :create
+      redirect_to private_wiki_new_path
     end
   end
 

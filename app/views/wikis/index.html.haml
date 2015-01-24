@@ -12,13 +12,14 @@
     - @wikis.reject(&:personal).each do |wiki|
       %h3= link_to wiki.title, wiki
       - if @user && (@user.creator?(wiki, @user) || @user.admin?)
-        = link_to 'Edit', edit_wiki_path({:id => wiki.id})
-        = link_to 'Delete', {:id => wiki.id, :action => 'destroy'}, :method => :delete, data: {confirm: 'Do you want to delete this Wiki?'}
-      %h5 
+        %small
+          = link_to 'Edit', edit_wiki_path({:id => wiki.id})
+          = link_to 'Delete', {:id => wiki.id, :action => 'destroy'}, :method => :delete, data: {confirm: 'Do you want to delete this Wiki?'}
+      %p 
+        = image_tag(wiki.creator.avatar.tiny.url) if wiki.creator.avatar?
         Created
         = time_ago_in_words(wiki.created_at)
         ago by
-        = image_tag(wiki.creator.avatar.tiny.url) 
         = wiki.creator.name
 
  

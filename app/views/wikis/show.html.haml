@@ -4,11 +4,12 @@
     .col-md-7
       .row
         .col-md-3
-          - if @wiki.personal?
-            = link_to "Back to Index", private_wiki_index_path
-          - else  
-            = link_to "Back to Index", wikis_path
-          %br
+          .largerlink
+            - if @wiki.personal?
+              = link_to "Back to Index", private_wiki_index_path
+            - else  
+              = link_to "Back to Index", wikis_path
+            %br
           
         .col-md-2
           - if policy(@wiki).update?

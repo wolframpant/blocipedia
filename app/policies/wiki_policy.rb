@@ -36,7 +36,7 @@ end
   end
   
   def add_collaborators?
-    user.present? && user.creator?(wiki, user)
+    user.present? && (user.creator?(wiki, user) || user.admin?)
   end
     
 end
