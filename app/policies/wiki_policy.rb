@@ -24,11 +24,7 @@ end
   end
 
   def create?
-    if wiki.personal
-      user.present? && (user.admin? || user.premium?)
-    else
-      user.present? && (user.admin? || user.standard?)
-    end
+    user.present?
   end
   
   def update?

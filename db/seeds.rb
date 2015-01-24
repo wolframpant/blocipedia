@@ -29,7 +29,8 @@ user = User.new(
     email: Faker::Internet.email,
     password: "helloworld",
     password_confirmation: "helloworld",
-    role: "premium")
+    role: "premium"
+  )
   user.skip_confirmation!
   user.save!
 end
@@ -55,7 +56,7 @@ wikis = Wiki.all
 wikis.each do |w|
   Relationship.create!(
     user: users.sample,
-    wiki: w,
+    wiki: wikis.sample,
     creator_created: true
   )
 
