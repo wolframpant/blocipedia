@@ -16,6 +16,7 @@ class WikisController < ApplicationController
 
   def index
     @wikis = Wiki.all
+    @wikisprivate = Wiki.all.where(personal: true)
     @user = current_user
   end
 
