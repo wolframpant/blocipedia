@@ -38,9 +38,9 @@
             &nbsp;
             = link_to "Sign Up (free)", new_user_registration_path
       
-  
-    .notices
-      %p= flash[:notice] if flash[:notice]
+    - if flash[:notice]
+      .notices
+        %p= flash[:notice]
 
 
     = yield 

@@ -16,7 +16,11 @@ class Wiki < ActiveRecord::Base
   end
   
   def creator
-    self.relationships.find_by(:creator_created == true).user
+    self.relationships.find_by(creator_created:true).user
+  end
+  
+  def collaborator
+    self.relationships.find_by(creator_created:false).user
   end
   
 end

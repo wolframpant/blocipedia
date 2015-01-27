@@ -12,6 +12,7 @@
         
     %br
     = f.hidden_field :user_id, :value => current_user.id
+    = f.hidden_field :wiki_id, :value => @wiki.id
     %br
     = f.submit 'Submit'
     

@@ -5,6 +5,7 @@ Blocipedia::Application.routes.draw do
   resources :charges, only: [:new, :create]
   resources :users, only: [:new, :create, :update, :destroy]
   resources :images, only: [:new, :create, :show, :destroy]
+  resources :relationships, only: [:new, :create, :destroy]
 
   get "private_wiki/new"
   get "private_wiki/create"
@@ -12,7 +13,6 @@ Blocipedia::Application.routes.draw do
   get "private_wiki/index"
   get "private_wiki/destroy"
   delete "private_wiki/destroy"
-  patch "relationships/new"
   get 'collaborators' => 'wikis#collaborator_list'
   
   get 'mine' => 'wikis#my_wikis'

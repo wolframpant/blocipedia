@@ -1,27 +1,43 @@
 .container
   .row
     .col-md-9
-      %h1 Edit Wiki
-      - if @wiki.personal
-        %h3 Private
-      %br
-      = form_for @wiki do |f| 
-        = f.label :title
-        %br
-        = f.text_field :title, :size => 50
-        %br
-        = f.label :body
-        %br
-        = f.text_area :body, cols: 140, rows: 10
-        %br
-        - if current_user.creator?(@wiki, current_user) && policy(@wiki).add_collaborators?
-          %p Select collaborators:
-          = f.collection_check_boxes :user_ids, User.where(role: "premium"), :id, :email
-        %br
-        = f.submit 'Save'
-      
-      .col-md-3
+      .row
+        .col-md-6
+          %h1 Edit Wiki <span class = "small">created by #{@wiki.creator.name}</span>
+          - if @wiki.personal
+            %h3 Private
+          %br
+          = form_for @wiki do |f| 
+            = f.label :title
+            %br
+            = f.text_field :title, :size => 50
+            %br
+            = f.label :body
+            %br
+            = f.text_area :body, cols: 120, rows: 10
+            %br
+            = f.submit 'Save'
+            
+        .col-md-6
+          - if @wiki.relationships.where(creator_created:false).exists?
+            %h3 Collaborators:
+            - @wiki.relationships.where(creator_created:false).each do |rel|
+              = rel.user.name
+              - if policy(rel).destroy?
+                .small
+                  = link_to 'Delete', relationship_path(rel), :method => :delete, data: {confirm: 'Do you want to delete this collaborator?'}
 
-        = link_to 'Add Image', new_image_path(:wiki_id => @wiki.id), class: 'btn btn-success'
+    .col-md-3
+      %br
+      %br
+      - if @wiki.personal && policy(@wiki).add_collaborators?
+        %h3 Add Collaborators:
+        %p (you may select as many collaborators for this wiki as you wish from the following list of premium members, but please save them one at a time):
+        = form_for @relationship do |f|
+          = f.collection_select :user_id, @users, :id, (:name || :email), size: 50 
+          = f.hidden_field :wiki_id, :value => @wiki.id
+          = f.hidden_field :creator_created, :value => false
+          %br
+          = f.submit 'Save'
 
 

@@ -50,14 +50,15 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
-    @user_options = User.all.map{|u|[u.name, u.id]}
+    @relationship = Relationship.new
+    @users = User.all.where(role: "premium")
     authorize(@wiki)
   end
 
   def update
     @wiki = Wiki.find(params[:id])
     authorize(@wiki)
-    if @wiki.update_attributes(params.require(:wiki).permit(:title, :body, :personal, user_ids: []))
+    if @wiki.update_attributes(params.require(:wiki).permit(:title, :body, :personal))
       redirect_to wiki_path
       flash[:notice] = "Success!"
     else

@@ -1,8 +1,8 @@
 class ImagesController < ApplicationController
 
   def new
-    @wiki = Wiki.find_by(params[:id])
-    @image = Image.new
+    @wiki = Wiki.find(params[:wiki_id])
+    @image = Image.new    
     authorize @image
   end
   

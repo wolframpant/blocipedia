@@ -14,9 +14,9 @@
     %h3.center You can create and edit Public Wikis as a Standard (free) member. To create Private Wikis and collaborate on them with others, try our #{link_to "Premium Plan", new_charge_path, class: "huge"}.
   - else
     .row
-      .col-md-6
+      .col-md-6.center
         %h3 Create as many public wikis as you want!
         = link_to "Free Plan", new_user_registration_path, class: 'btn btn-success'
-      .col-md-6
+      .col-md-6.center
         %h3 Create and share private wikis!
         = link_to "Premium Plan", new_charge_path, class: 'btn btn-success'
