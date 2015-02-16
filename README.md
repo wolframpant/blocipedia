@@ -1,28 +1,5 @@
-== README
+Blocipedia is an app, hosted [here](ellen-Blocipedia.herokuapp.com), that allows users to create private and public wikis. Premium users may share the editing and updating of their private wikis with collaborators. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The app incorporates a markdown parser, so that users may format their work; it also allows users to upload images to the Amazon s3 service using the [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) and [MiniMagick](https://github.com/minimagick/minimagick) gems, and to use them either as personal avatars or as additions to their wikis.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The [Devise](https://github.com/plataformatec/devise) and [Stripe](https://github.com/stripe/stripe-ruby) gems were used to create two levels of user, one free and one paid.
