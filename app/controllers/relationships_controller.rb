@@ -18,9 +18,7 @@ class RelationshipsController < ApplicationController
   end
   
    def destroy
-     @wiki = Wiki.find(params[:id])
-     @user = User.find(params[:id])
-     @relationship = Relationship.find_by(wiki_id:@wiki.id, user_id:@user.id)
+     @relationship = Relationship.find(params[:id])
     
      authorize(@relationship)
     
