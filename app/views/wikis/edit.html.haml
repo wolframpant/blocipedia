@@ -14,7 +14,7 @@
             %br
             = f.label :body
             %br
-            = f.text_area :body, cols: 120, rows: 10
+            = f.text_area :body, cols: 100, rows: 10
             %br
             = f.submit 'Save'
             
@@ -33,11 +33,12 @@
       - if @wiki.personal && policy(@wiki).add_collaborators?
         %h3 Add Collaborators:
         %p (you may select as many collaborators for this wiki as you wish from the following list of premium members, but please save them one at a time):
-        = form_for @relationship do |f|
-          = f.collection_select :user_id, @users, :id, (:name || :email), size: 50 
-          = f.hidden_field :wiki_id, :value => @wiki.id
-          = f.hidden_field :creator_created, :value => false
-          %br
-          = f.submit 'Save'
+        .blackform
+          = form_for @relationship do |f|
+            = f.collection_select :user_id, @users, :id, (:name || :email), size: 50 
+            = f.hidden_field :wiki_id, :value => @wiki.id
+            = f.hidden_field :creator_created, :value => false
+            %br
+            = f.submit 'Save'
 
 

@@ -19,7 +19,7 @@
         - if current_user
           %li
             = link_to "Create Wiki", options_path
-        -if current_user && !current_user.premium?
+        -if (current_user && !current_user.premium? && !current_user.admin?)
           %li
             = link_to "Become a PREMIUM member!", new_charge_path
         -if current_user && (current_user.premium? || current_user.admin?)
